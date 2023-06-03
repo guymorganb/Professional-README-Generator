@@ -1,29 +1,27 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// TODO: Create an array of questions for user input
+// destructuring the array for use
+const {markdown, renderLicenseBadge, renderLicenseSection} = require('./utils/generateMarkdown')
+// setting the file path
+const filePath = '../Readme.md'
+
+// an array of questions for user input
 const questions = [ 
 {
+    type : 'input',
+    name : 'Author',
+    message : 'Who is the copywrite holder?'
+},
+{
     type: 'input',
-    name: 'title',
+    name: 'Title',
     message: 'Enter the title of your project:',
 },
 {
     type: 'input',
-    name: 'description',
+    name: 'Description',
     message: 'Enter a description for your project',
-},
-{
-    type: 'checkbox',
-    name: 'tableOfContents',
-    message: 'Select what to include in the Table of Contents',
-    choices: [
-        'Insallation',
-        'Usage',
-        'Features',
-        'Credits',
-        'License',
-    ],
 },
 {
     type: 'input',
@@ -45,12 +43,13 @@ const questions = [
     name: 'License',
     message: 'Select a license for your project:',
     choices: [
-        'MIT License',
-        'Apache License 2.0',
-        'GNU General Public License (GPL)',
+        'MIT',
+        'Apache',
+        'GNU',
         'ISC',
         'Unlicense',
-        'Artistic license 2.0',
+        'Artistic',
+        'Author Defined',
     ]
 },
 {
@@ -74,16 +73,31 @@ const questions = [
     message: 'Are there any tests for this project?',
 }
 ];
-// TODO: Create a function to initialize app
+// initialize the app
 function init() {
     inquirer.prompt(questions).then(function(answers){
-        console.log(answers)
+    writeToFile(filePath, answers)
     })
 }
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+// a function to write README file
+function writeToFile(fileName, answers) {
+    // render badge and links
+    let badge = renderLicenseBadge(answers)
+    //render legal jargon 
+    let legal = renderLicenseSection(answers);
+    // render the .md structure
+    let md = markdown(answers, badge, legal)
+    // write the file
+    fs.writeFile(fileName, md, (error) => {
+        if(error){
+            console.error('Error writing file:', error);
+        }else(
+            console.log('File sucessfully written')
+        )
+    } )
+}
+    
 // Function call to initialize app
 init();
 
