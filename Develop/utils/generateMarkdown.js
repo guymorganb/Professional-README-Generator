@@ -414,9 +414,12 @@ function renderLicenseSection(data) {
 }
 // a function to generate markdown for README
 function markdown(data, renderBadge, renderLegal) {
-  console.log("hello from markdown")
   return `
   # ${data.Title}
+
+  ## Badges
+  ${renderBadge}
+
   ## Description
   - ${data.Description}
   
@@ -432,20 +435,17 @@ function markdown(data, renderBadge, renderLegal) {
   ## Usage
   - ${data.Usage}
   
-  ## Credits
-  - ${data.Credits}
+  ## Questions
+  - Please reach out to ${data.Questions} to answer questions about this project and follow this link to GitHub. https://github.com/${data.GitHub}
 
   ## License
   - ${renderLegal}
-
-  ## Badges
-  ${renderBadge}
 
   ## Features
   - ${data.Features}
 
   ## How to Contribute
-  - ${data.Contribution}
+  - ${data.Contributing}
   
   ## Tests
   - ${data.Tests}

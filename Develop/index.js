@@ -4,7 +4,7 @@ const fs = require('fs');
 // destructuring the array for use
 const {markdown, renderLicenseBadge, renderLicenseSection} = require('./utils/generateMarkdown')
 // setting the file path
-const filePath = '../Readme.md'
+const filePath = '../README.md'
 
 // an array of questions for user input
 const questions = [ 
@@ -35,8 +35,13 @@ const questions = [
 },
 {
     type: 'input',
-    name: 'Credits',
-    message: 'Are there any credits to note for this project?',
+    name: 'Questions',
+    message: 'What email adress can you be reached at to answer questions about the project?',
+},
+{
+    type: 'input',
+    name: 'GitHub',
+    message: 'Please enter your GitHub username.',
 },
 {
     type: 'list',
@@ -59,8 +64,8 @@ const questions = [
 },
 {
     type: 'input',
-    name: 'Contribution',
-    message: 'Enter the contribution guidelines for your project:',
+    name: 'Contributing',
+    message: 'How can others contribute to the project.',
 },
 {
     type: 'input',
