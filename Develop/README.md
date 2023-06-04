@@ -6,6 +6,8 @@
 
   ## Description
   - Used to create a pro README using Terminal
+  - To view walkthrough video follow this link.
+  https://drive.google.com/file/d/1-2X3K77I1JMzjPJ2XggOl-5d2Rx3Gf0U/view?usp=sharing
   
   ## Table of Contents
   - [Installation](#installation)
