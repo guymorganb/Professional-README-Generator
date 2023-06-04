@@ -5,6 +5,7 @@ const fs = require('fs');
 const {markdown, renderLicenseBadge, renderLicenseSection} = require('./utils/generateMarkdown')
 // setting the file path
 const filePath = '../README.md'
+const licesncePath = '../LICENSE'
 
 // an array of questions for user input
 const questions = [ 
@@ -95,6 +96,13 @@ function writeToFile(fileName, answers) {
     let md = markdown(answers, badge, legal)
     // write the file
     fs.writeFile(fileName, md, (error) => {
+        if(error){
+            console.error('Error writing file:', error);
+        }else(
+            console.log('File sucessfully written')
+        )
+    } )
+    fs.writeFile(licesncePath, legal, (error) => {
         if(error){
             console.error('Error writing file:', error);
         }else(
