@@ -11,7 +11,7 @@ const questions = [
 {
     type : 'input',
     name : 'Author',
-    message : 'Who is the copywrite holder?'
+    message : 'What is the Authors name?'
 },
 {
     type: 'input',
